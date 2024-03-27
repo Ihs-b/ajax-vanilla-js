@@ -107,6 +107,7 @@
 
 
 // Ajax 3 and php
+// Ajax get form
 
 var buttonFour = document.getElementById('button4');
 buttonFour.addEventListener("click", getName);
@@ -123,5 +124,26 @@ function getName(e){
         console.log(this.responseText);
     }
     xhr.send();
+
+}
+
+
+// ajax post form
+var ajaxPostForm = document.getElementById('postForm')
+ajaxPostForm.addEventListener("submit", postName)
+
+function postName(e){
+    e.preventDefault();
+    let name = document.getElementById('name2').value
+    let params = 'name='+ name;
+
+    let xhr = new XMLHttpRequest();
+    xhr.open('POST', 'main.php?', true);
+    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded')
+
+    xhr.onload = function (){
+        console.log(this.responseText);
+    }
+    xhr.send(params);
 
 }
