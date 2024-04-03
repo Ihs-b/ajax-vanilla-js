@@ -10,9 +10,9 @@ const web = document.getElementById('web');
 
 var count = 0
 var saveButton = document.getElementById('save-btn');
-// var deleteButton = document.getElementById('delete');
+
 saveButton.addEventListener('click', saveInfo);
-// deleteButton.addEventListener('click', deleteInfo);
+
 
 function saveInfo(){
     let data = {
@@ -28,11 +28,18 @@ function saveInfo(){
     // console.log(contents)
     content =  localStorage.getItem('user'+ count);
     console.log(content)
-    document.getElementById('output').innerHTML += content + " <br> ";
+    let newPara = document.createElement('p');
+    newPara.innerHTML  = content
+    document.getElementById('output').appendChild(newPara) ;
     count ++;
 };
 
 
-// function deleteInfo(){
-//     localStorage.removeItem("user");
-// }
+var deleteButton = document.getElementById('delete-btn');
+deleteButton.addEventListener('click', deleteInfo);
+
+function deleteInfo(){
+    console.log(count);
+    let ind = count - 1 
+    localStorage.removeItem("user"+ ind);
+}
